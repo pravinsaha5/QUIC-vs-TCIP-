@@ -4,6 +4,7 @@
 #-l  defines packet loss in %, it is given within range in comparison.py
 #-d  define delay in ms
 #-b  bandwidth in mbps
+#-s  defines delay(sec) before spike occures.
 
 python comparison.py -p QUIC TCP -l 5.0 -d 50  -b 100 --vverbose
 python comparison.py -p QUIC TCP -l 5.0 -d 50  -b 40 --vverbose
