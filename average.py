@@ -31,10 +31,10 @@ for method in methods:
 						err = False
 						listbw, listoh, listde = [], [], []
 						for number in testnumber:
-							fichero = os.path.normpath(pathfile+'/DATA'+method+'_'+bandwidth+'_'+loss+'_'+mean+'_'+variance+'_'+spike+'_'+ number+'.txt')
+							filepath = os.path.normpath(pathfile+'/DATA'+method+'_'+bandwidth+'_'+loss+'_'+mean+'_'+variance+'_'+spike+'_'+ number+'.txt')
 
 							try:
-								with open(fichero, 'r') as f:
+								with open(filepath, 'r') as f:
 									line = f.readline()
 									parts = line.split()
 									avg_overhead += float(parts[0])
@@ -47,9 +47,9 @@ for method in methods:
 							except:
 								err = True
 								print 'File '+method+'_'+bandwidth+'_'+loss+'_'+mean+'_'+variance+'_'+spike+'_'+number+'.txt not found'
-							fichero = os.path.normpath(pathfile+'/SUM'+method+'_'+bandwidth+'_'+loss+'_'+mean+'_'+variance+'_'+spike+'_'+number+'.txt')
+							filepath = os.path.normpath(pathfile+'/SUM'+method+'_'+bandwidth+'_'+loss+'_'+mean+'_'+variance+'_'+spike+'_'+number+'.txt')
 							try:
-								with open(fichero, 'r') as f:
+								with open(filepath, 'r') as f:
 									for line in f:
 										parts = line.split()
 										if parts[0] in dic:
@@ -66,15 +66,15 @@ for method in methods:
 							avg_bandwidth /= len(testnumber)
 							avg_bandwidth /= 1000000
 							listbw[:] = [x/1000000 for x in listbw]
-							fichero = os.path.normpath(pathfile+'/AVGDATA'+method+'_'+bandwidth+'_'+loss+'_'+mean+'_'+variance+'_'+spike+'.txt')
-							f = open(fichero, 'w')
+							filepath = os.path.normpath(pathfile+'/AVGDATA'+method+'_'+bandwidth+'_'+loss+'_'+mean+'_'+variance+'_'+spike+'.txt')
+							f = open(filepath, 'w')
 							f.write(str(avg_overhead)+' '+str(avg_delay)+' '+str(avg_bandwidth)+'\n')
 							print np.std(listbw)
 							f.write(str(np.std(listoh))+' '+str(np.std(listde))+' '+str(np.std(listbw))+'\n')
 							f.close()
 
-							fichero = os.path.normpath(pathfile+'/AVGSUM'+method+'_'+bandwidth+'_'+loss+'_'+mean+'_'+variance+'_'+spike+'.txt')
-							f = open(fichero, 'w')
+							filepath = os.path.normpath(pathfile+'/AVGSUM'+method+'_'+bandwidth+'_'+loss+'_'+mean+'_'+variance+'_'+spike+'.txt')
+							f = open(filepath, 'w')
 							for key in sorted(dic.keys()):
 								f.write(str(key)+' '+str(float(float(dic[key])/len(testnumber)))+'\n')
 
