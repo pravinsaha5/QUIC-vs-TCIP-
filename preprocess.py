@@ -90,8 +90,7 @@ for fich in onlyfiles:
 				break
 
 	temp = tiempo[2].split('.')
-	final_time = float(tiempo[1]) * 60 + float(temp[0]
-											   ) + float(float(temp[1]) / 1000000)
+	final_time = float(tiempo[1]) * 60 + float(temp[0]) + float(float(temp[1]) / 1000000)
 	rutasave = os.path.normpath(fich.replace(
 		openpath + '/', savepath + '/SUM'))
 	fichero = open(rutasave + '.txt', 'w')
