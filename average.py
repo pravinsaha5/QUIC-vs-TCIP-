@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 This script averages diferent instances of the same test. By default, each test is run five times.
-Run this script after script.py and preprocess.py
+Run this script after preprocess.py
 """
 
 import os
